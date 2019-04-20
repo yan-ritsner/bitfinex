@@ -6,9 +6,11 @@ import {
 } from "../actions/symbolActions";
 import request from "../network/request";
 
+const apiUrl = "https://api.bitfinex.com/v1/symbols";
+
 function* getSymbols() {
   try {
-    const symbols = yield call(request, "symbols");
+    const symbols = yield call(request, apiUrl);
     yield put(getSymbolsSucceeded(symbols));
   } catch (error) {
     yield put(getSymbolsFailed(error));

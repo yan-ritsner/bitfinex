@@ -1,7 +1,7 @@
 export default class Socket {
   url = null;
   socket = null;
-  log = true;
+  log = false;
   reconnect = true;
   reconnectInterval = 1000;
   reconnectTimeout = null;

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import SymbolSelector from "./components/SymbolSelector";
+import BookView from "./components/BookView";
 class App extends Component {
   render() {
     return (
@@ -8,6 +9,7 @@ class App extends Component {
         <header className="App-header">
           <SymbolSelector />
         </header>
+        <BookView />
       </div>
     );
   }

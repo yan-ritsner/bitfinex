@@ -1,6 +1,4 @@
-
 const proxyUrl = "https://cors-anywhere.herokuapp.com/";
-const apiUrl = "https://api.bitfinex.com/v1/";
 
 async function handleResponse(response) {
   if (response.ok) {
@@ -19,9 +17,9 @@ function handleError(error) {
   throw error;
 }
 
-export default function request(action, data){
-    const url = `${proxyUrl}${apiUrl}${action}`
-    return fetch(url, data)
-      .then(handleResponse)
-      .catch(handleError);
+export default function request(apiUrl, data) {
+  const url = `${proxyUrl}${apiUrl}`;
+  return fetch(url, data)
+    .then(handleResponse)
+    .catch(handleError);
 }
