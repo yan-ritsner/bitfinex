@@ -1,3 +1,7 @@
+/**
+ * Auto Reconnecting web socket.
+ * Auto reconnects socket on disconnect.
+ */
 export default class Socket {
   url = null;
   socket = null;

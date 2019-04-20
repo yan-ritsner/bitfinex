@@ -80,6 +80,9 @@ function sendUnsubscribe(socket, chanId) {
   );
 }
 
+/**
+ * Trades saga
+ */
 export default function* tradesSaga() {
   yield all([
     takeEvery(types.SOCKET_OPEN, socketOpened),

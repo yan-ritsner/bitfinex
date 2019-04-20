@@ -1,6 +1,10 @@
 import * as types from "../actions/actionTypes";
 import initialState from "../store/initialState";
 
+/**
+ * Creates and returns ticker data from snapshot or update
+ * @param {object} data - snapshot or update data
+ */
 function createTicker(data) {
   const bid = data[0];
   const bidSize = data[1];
@@ -29,6 +33,11 @@ function createTicker(data) {
   return ticker;
 }
 
+/**
+ * Ticker reducer
+ * @param {object} state  - current state
+ * @param {object} action - action
+ */
 export default function tickerReducer(state = initialState.ticker, action) {
   switch (action.type) {
     case types.SUBSCRIBE_TICKER_REQUESTED:

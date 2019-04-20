@@ -8,9 +8,9 @@ export default class BookRow extends PureComponent {
     const columns = this.props.columns;
     return (
       <tr>
-        {columns.map(column => (
-          <BookCell key={column} row={row} column={column} />
-        ))}
+        {columns.map(column => {
+          return <BookCell key={column} value={row[column]} />;
+        })}
       </tr>
     );
   }

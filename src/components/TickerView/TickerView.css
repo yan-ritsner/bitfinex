@@ -4,3 +4,19 @@
   color: #c4c7c9;
   margin: 20px 5px;
 }
+
+.ticker-icon {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.ticker-up-color {
+  color: rgba(0, 128, 0, 1);
+}
+
+.ticker-symbol {
+  font-weight: bold;
+  font-size: 15px;
+}
+.ticker-down-color {
+  color: rgba(255, 0, 0, 1);
+}

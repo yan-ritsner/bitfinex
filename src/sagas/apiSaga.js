@@ -5,6 +5,9 @@ import bookSaga from "./bookSaga";
 import tickerSaga from "./tickerSaga";
 import tradeSaga from "./tradeSaga";
 
+/**
+ * Root api calls saga
+ */
 export default function* apiSaga() {
   yield all([
     socketSaga(),

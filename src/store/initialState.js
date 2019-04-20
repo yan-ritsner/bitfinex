@@ -1,3 +1,6 @@
+/**
+ * Store initial state
+ */
 export default {
   symbols: {
     requesting: false,
@@ -20,7 +23,12 @@ export default {
     update: null,
     bids: {},
     asks: {},
-    chanId: null
+    sortedBids: [],
+    sortedAsks: [],
+    total: 0,
+    chanId: null,
+    zoom: 1,
+    precision: 0
   },
   ticker: {
     requested: false,

@@ -4,6 +4,8 @@ import SymbolSelector from "./components/SymbolSelector";
 import BookView from "./components/BookView";
 import TickerView from "./components/TickerView";
 import TradeView from "./components/TradeView";
+import ZoomView from "./components/ZoomView";
+import PrecisionView from "./components/PrecisionView";
 
 class App extends Component {
   render() {
@@ -11,6 +13,8 @@ class App extends Component {
       <div className="app">
         <div className="app-header">
           <SymbolSelector />
+          <ZoomView />
+          <PrecisionView />
         </div>
         <div className="app-content">
           <TickerView />

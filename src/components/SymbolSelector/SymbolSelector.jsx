@@ -5,6 +5,10 @@ import { connect } from "react-redux";
 import { getSymbols, selectSymbol } from "../../actions/symbolActions";
 import "./SymbolSelector.css";
 
+/**
+ * Symbol selector component.
+ * Renders symbols list and allows to choose symbol to visualize.
+ */
 class SymbolSelector extends PureComponent {
   componentDidMount() {
     const { symbols, getSymbols } = this.props;

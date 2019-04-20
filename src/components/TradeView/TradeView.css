@@ -25,3 +25,19 @@
   padding: 2px 5px;
   text-align: right;
 }
+
+.trade-buy-row {
+  background-color: rgba(0, 128, 0, 0.1);
+}
+
+.trade-sell-row {
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
+.trade-buy-icon {
+  color: rgba(0, 128, 0, 0.5);
+}
+
+.trade-sell-icon {
+  color: rgba(255, 0, 0, 0.5);
+}

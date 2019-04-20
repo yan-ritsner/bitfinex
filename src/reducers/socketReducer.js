@@ -1,6 +1,11 @@
 import * as types from "../actions/actionTypes";
 import initialState from "../store/initialState";
 
+/**
+ * Socket reducer
+ * @param {object} state  - current state
+ * @param {object} action - action
+ */
 export default function socketReducer(state = initialState.socket, action) {
   switch (action.type) {
     case types.SOCKET_OPEN:

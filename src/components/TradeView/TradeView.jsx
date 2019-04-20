@@ -4,6 +4,9 @@ import { connect } from "react-redux";
 import TradeTable from "./components/TradeTable";
 import "./TradeView.css";
 
+/**
+ * Market trades view component.
+ */
 class TradeView extends PureComponent {
   render() {
     const data = this.props.trades.data;

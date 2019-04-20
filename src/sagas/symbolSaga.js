@@ -17,6 +17,9 @@ function* getSymbols() {
   }
 }
 
+/**
+ * Symbols saga
+ */
 export default function* symbolSaga() {
   yield takeEvery(types.GET_SYMBOLS_REQUESTED, getSymbols);
 }

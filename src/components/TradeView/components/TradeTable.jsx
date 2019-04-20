@@ -12,6 +12,7 @@ export default class TradeTable extends PureComponent {
       <table>
         <thead>
           <tr>
+            <th />
             {columns.map(column => (
               <th key={column}>{column}</th>
             ))}

@@ -12,14 +12,17 @@ const socket = new Socket(socketUrl);
 
 function initSocket() {
   return eventChannel(emitter => {
+    //socket open
     socket.onopen = () => {
       return emitter(socketOpen(socket));
     };
 
+    //socket closed
     socket.onclose = () => {
       return emitter(socketClose());
     };
 
+    //socket message received
     socket.onmessage = e => {
       let msg = null;
       try {
@@ -46,6 +49,9 @@ function initSocket() {
   });
 }
 
+/**
+ * Socket saga
+ */
 export default function* socketSaga() {
   const channel = yield call(initSocket);
   while (true) {

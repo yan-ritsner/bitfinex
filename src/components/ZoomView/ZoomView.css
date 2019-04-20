@@ -1,0 +1,14 @@
+.zoom-view {
+  color: white;
+  margin-left: 20px;
+}
+
+.zoom-view > i {
+  font-size: 14px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.zoom-view > i:hover {
+  color: cornflowerblue;
+}

@@ -76,6 +76,9 @@ function sendUnsubscribe(socket, chanId) {
   );
 }
 
+/**
+ * Ticker saga
+ */
 export default function* tickerSaga() {
   yield all([
     takeEvery(types.SOCKET_OPEN, socketOpened),

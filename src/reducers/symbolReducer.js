@@ -3,6 +3,11 @@ import initialState from "../store/initialState";
 
 const defaultSymbols = ["btcusd", "ethusd"];
 
+/**
+ * Symbols reducer
+ * @param {object} state  - current state
+ * @param {object} action - action
+ */
 export default function symbolReducer(state = initialState.symbols, action) {
   switch (action.type) {
     case types.GET_SYMBOLS_REQUESTED:

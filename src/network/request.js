@@ -1,5 +1,9 @@
 const proxyUrl = "https://cors-anywhere.herokuapp.com/";
 
+/**
+ * Response handler
+ * @param {object} response
+ */
 async function handleResponse(response) {
   if (response.ok) {
     const json = await response.json();
@@ -12,11 +16,20 @@ async function handleResponse(response) {
   throw new Error("API response was not ok.");
 }
 
+/**
+ * error handler
+ * @param {string} error - error
+ */
 function handleError(error) {
   console.error(`API call failed: ${error}`);
   throw error;
 }
 
+/**
+ * Web Api call helper
+ * @param {string} apiUrl - url
+ * @param {object} data - parameter
+ */
 export default function request(apiUrl, data) {
   const url = `${proxyUrl}${apiUrl}`;
   return fetch(url, data)

@@ -2,8 +2,15 @@ import * as types from "../actions/actionTypes";
 import initialState from "../store/initialState";
 import { formatDate } from "../utils";
 
+/**
+ * Max displayed trades
+ */
 const maxSize = 25;
 
+/**
+ * Creates and return trades data from snapshot
+ * @param {object} snapshot
+ */
 function createTrades(snapshot) {
   let trades = [];
 
@@ -12,7 +19,7 @@ function createTrades(snapshot) {
     const time = formatDate(new Date(entry[1]), "hh:mm:ss", true);
     const amount = entry[2];
     const price = entry[3];
-    const data = { id, time, amount, price };
+    const data = { id, time, amount: Math.abs(amount), price, buy: amount > 0 };
     trades.push(data);
   });
 
@@ -22,6 +29,12 @@ function createTrades(snapshot) {
   return trades;
 }
 
+/**
+ * Creates and return book data from snapshot
+ * @param {object} state - current books state
+ * @param {object} update - update object
+ * @param {object} updateType - update type: add (te) or update (tu)
+ */
 function updateTrades(state, updateType, update) {
   let trades = [...state.data];
 
@@ -30,7 +43,7 @@ function updateTrades(state, updateType, update) {
   const time = formatDate(new Date(entry[1]), "hh:mm:ss", true);
   const amount = entry[2];
   const price = entry[3];
-  const data = { id, time, amount, price };
+  const data = { id, time, amount: Math.abs(amount), price, buy: amount > 0 };
 
   if (updateType === "te") {
     trades.unshift(data);
@@ -48,6 +61,11 @@ function updateTrades(state, updateType, update) {
   return trades;
 }
 
+/**
+ * Trade reducer
+ * @param {object} state  - current state
+ * @param {object} action - action
+ */
 export default function tradeReducer(state = initialState.trades, action) {
   switch (action.type) {
     case types.SUBSCRIBE_TRADES_REQUESTED:
