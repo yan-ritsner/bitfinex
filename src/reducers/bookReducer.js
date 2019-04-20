@@ -11,7 +11,8 @@ function createBook(snapshot) {
     const price = entry[0];
     const count = entry[1];
     const amount = entry[2];
-    const data = { price, count, amount };
+    const amountRounded = amount ? Math.abs(amount).toFixed(2) : 0;
+    const data = { price, count, amount: amountRounded };
 
     if (count === 0) return;
     if (amount > 0) book.bids[price] = data;
@@ -31,7 +32,9 @@ function updateBook(state, update) {
   const price = entry[0];
   const count = entry[1];
   const amount = entry[2];
-  const data = { price, count, amount };
+  const amountRounded = amount ? Math.abs(amount).toFixed(2) : 0;
+
+  const data = { price, count, amount: amountRounded };
 
   if (count === 0) {
     if (amount > 0) delete book.bids[price];

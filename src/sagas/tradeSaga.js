@@ -1,23 +1,23 @@
 import { all, put, select, takeEvery } from "redux-saga/effects";
 import * as types from "../actions/actionTypes";
 import {
-  subscribeBooks,
-  subscribeBooksSucceeded,
-  unsubscribeBooks,
-  unsubscribeBooksSucceeded,
-  bookSnapshotReceived,
-  bookUpdateReceived
-} from "../actions/bookActions";
+  subscribeTrades,
+  subscribeTradesSucceeded,
+  unsubscribeTrades,
+  unsubscribeTradesSucceeded,
+  tradeSnapshotReceived,
+  tradeUpdateReceived
+} from "../actions/tradeActions";
 
 function* symbolSelected() {
-  const chanId = yield select(state => state.books.chanId);
+  const chanId = yield select(state => state.trades.chanId);
   const symbol = yield select(state => state.symbols.selectedSymbol);
   const socket = yield select(state => state.socket);
   if (chanId && socket.open) {
-    yield put(unsubscribeBooks(socket.socket, chanId));
+    yield put(unsubscribeTrades(socket.socket, chanId));
   }
   if (symbol && socket.open) {
-    yield put(subscribeBooks(socket.socket, symbol));
+    yield put(subscribeTrades(socket.socket, symbol));
   }
 }
 
@@ -25,12 +25,12 @@ function* socketOpened() {
   const symbol = yield select(state => state.symbols.selectedSymbol);
   const socket = yield select(state => state.socket);
   if (symbol && socket.open) {
-    yield put(subscribeBooks(socket.socket, symbol));
+    yield put(subscribeTrades(socket.socket, symbol));
   }
 }
 
 function* socketMessageReceived() {
-  const chanId = yield select(state => state.books.chanId);
+  const chanId = yield select(state => state.trades.chanId);
   const message = yield select(state => state.socket.message);
   //snapshot or update or hb
   if (Array.isArray(message) && message[0] === chanId) {
@@ -38,21 +38,21 @@ function* socketMessageReceived() {
     if (payload) {
       if (payload[0] === "hb") {
       } else if (Array.isArray(payload[0])) {
-        yield put(bookSnapshotReceived(payload));
+        yield put(tradeSnapshotReceived(payload));
       } else {
-        yield put(bookUpdateReceived(payload));
+        yield put(tradeUpdateReceived(payload));
       }
     }
   }
   //subscribe/unsubscribe response
-  else if (message.channel === "book") {
+  else if (message.channel === "trade") {
     switch (message.event) {
       case "subscribed": {
-        yield put(subscribeBooksSucceeded(message.chanId));
+        yield put(subscribeTradesSucceeded(message.chanId));
         break;
       }
       case "unsubscribed": {
-        yield put(unsubscribeBooksSucceeded());
+        yield put(unsubscribeTradesSucceeded());
         break;
       }
       default:
@@ -64,11 +64,9 @@ function sendSubscribe(socket, symbol) {
   socket.send(
     JSON.stringify({
       event: "subscribe",
-      channel: "book",
-      symbol: `t${symbol.toUpperCase()}`
-      // prec: "P0",
-      // freq: "F1",
-      // len: 25
+      channel: "trades",
+      symbol: `t${symbol.toUpperCase()}`,
+      pair: symbol.toUpperCase()
     })
   );
 }
@@ -82,15 +80,15 @@ function sendUnsubscribe(socket, chanId) {
   );
 }
 
-export default function* booksSaga() {
+export default function* tradesSaga() {
   yield all([
     takeEvery(types.SOCKET_OPEN, socketOpened),
     takeEvery(types.SELECT_SYMBOL, symbolSelected),
     takeEvery(types.SOCKET_MESSAGE, socketMessageReceived),
-    takeEvery(types.SUBSCRIBE_BOOKS_REQUESTED, action =>
+    takeEvery(types.SUBSCRIBE_TRADES_REQUESTED, action =>
       sendSubscribe(action.socket, action.symbol)
     ),
-    takeEvery(types.UNSUBSCRIBE_BOOKS_REQUESTED, action =>
+    takeEvery(types.UNSUBSCRIBE_TRADES_REQUESTED, action =>
       sendUnsubscribe(action.socket, action.chanId)
     )
   ]);

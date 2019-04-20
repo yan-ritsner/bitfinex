@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import "./App.css";
 import SymbolSelector from "./components/SymbolSelector";
 import BookView from "./components/BookView";
+import TickerView from "./components/TickerView";
+import TradeView from "./components/TradeView";
+
 class App extends Component {
   render() {
     return (
@@ -10,7 +13,15 @@ class App extends Component {
           <SymbolSelector />
         </div>
         <div className="app-content">
-          <BookView />
+          <TickerView />
+          <div className="app-book-trade-container">
+            <div>
+              <BookView />
+            </div>
+            <div>
+              <TradeView />
+            </div>
+          </div>
         </div>
       </div>
     );

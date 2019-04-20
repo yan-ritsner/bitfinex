@@ -1,8 +1,8 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import "./BookView.css";
 import BookTable from "./components/BookTable";
+import "./BookView.css";
 
 class BookView extends PureComponent {
   render() {

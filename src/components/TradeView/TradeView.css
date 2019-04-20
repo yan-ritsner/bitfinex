@@ -1,31 +1,27 @@
-.book-view {
-  display: table;
+.trade-view {
   background: #1b262d;
   color: #c4c7c9;
   margin: 20px 5px;
   min-width: 500px;
   min-height: 520px;
 }
-.book-view > div {
-  display: table-cell;
-}
 
-.book-view > div > table {
+.trade-view > table {
   width: 100%;
   border-spacing: 0;
   border-collapse: collapse;
 }
 
-.book-view tbody > tr:hover {
+.trade-view tbody > tr:hover {
   background: #232e35;
 }
 
-.book-view th {
+.trade-view th {
   text-transform: uppercase;
   color: #888;
 }
-.book-view th,
-.book-view td {
+.trade-view th,
+.trade-view td {
   padding: 2px 5px;
   text-align: right;
 }

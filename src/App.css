@@ -2,6 +2,8 @@
   position: absolute;
   height: 100%;
   width: 100%;
+  background: #2c3940;
+  font-size: 12px;
 }
 
 .app-header {
@@ -9,10 +11,20 @@
   height: 30px;
   width: 100%;
   top: 0;
+  background: #1b262d;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
 }
 .app-content {
   position: absolute;
   top: 30px;
   bottom: 0;
   widows: 100%;
+}
+
+.app-book-trade-container {
+  display: table;
+}
+
+.app-book-trade-container > div {
+  display: table-cell;
 }

@@ -4,7 +4,12 @@ export default {
     failed: false,
     error: null,
     data: [],
-    selectedSymbol: null
+    selectedSymbol: "btcusd"
+  },
+  socket: {
+    socket: null,
+    open: false,
+    message: null
   },
   books: {
     requested: false,
@@ -17,9 +22,23 @@ export default {
     asks: {},
     chanId: null
   },
-  socket: {
-    socket: null,
-    open: false,
-    message: null
+  ticker: {
+    requested: false,
+    subscribed: false,
+    failed: false,
+    error: null,
+    update: null,
+    data: {},
+    chanId: null
+  },
+  trades: {
+    requested: false,
+    subscribed: false,
+    failed: false,
+    error: null,
+    snapshot: null,
+    update: null,
+    data: [],
+    chanId: null
   }
 };

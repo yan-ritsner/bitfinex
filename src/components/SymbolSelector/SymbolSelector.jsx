@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { getSymbols, selectSymbol } from "../../actions/symbolActions";
+import "./SymbolSelector.css";
 
 class SymbolSelector extends PureComponent {
   componentDidMount() {
@@ -16,7 +17,11 @@ class SymbolSelector extends PureComponent {
     const { symbols } = this.props;
     const value = symbols.selectedSymbol ? symbols.selectedSymbol : "";
     return (
-      <select value={value} onChange={e => this.onChange(e)}>
+      <select
+        className="symbol-selector"
+        value={value}
+        onChange={e => this.onChange(e)}
+      >
         <option value="" disabled>
           Select symbol...
         </option>
