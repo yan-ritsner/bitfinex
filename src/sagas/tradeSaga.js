@@ -34,18 +34,18 @@ function* socketMessageReceived() {
   const message = yield select(state => state.socket.message);
   //snapshot or update or hb
   if (Array.isArray(message) && message[0] === chanId) {
-    var payload = message[1];
+    var payload = message;
     if (payload) {
-      if (payload[0] === "hb") {
-      } else if (Array.isArray(payload[0])) {
-        yield put(tradeSnapshotReceived(payload));
+      if (payload[1] === "hb") {
+      } else if (Array.isArray(payload[1][0])) {
+        yield put(tradeSnapshotReceived(payload[1]));
       } else {
-        yield put(tradeUpdateReceived(payload));
+        yield put(tradeUpdateReceived(payload[1], payload[2]));
       }
     }
   }
   //subscribe/unsubscribe response
-  else if (message.channel === "trade") {
+  else if (message.channel === "trades") {
     switch (message.event) {
       case "subscribed": {
         yield put(subscribeTradesSucceeded(message.chanId));

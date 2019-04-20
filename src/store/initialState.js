@@ -28,6 +28,7 @@ export default {
     failed: false,
     error: null,
     update: null,
+    updateType: "",
     data: {},
     chanId: null
   },

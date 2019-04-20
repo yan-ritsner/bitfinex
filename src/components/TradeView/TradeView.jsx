@@ -9,7 +9,7 @@ class TradeView extends PureComponent {
     const data = this.props.trades.data;
 
     return (
-      <div className="book-view">
+      <div className="trade-view">
         <TradeTable data={data} />
       </div>
     );

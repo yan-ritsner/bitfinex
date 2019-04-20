@@ -39,6 +39,10 @@ export function tradeSnapshotReceived(snapshot) {
   return { type: types.TRADES_SNAPSHOT_RECEIVED, snapshot: snapshot };
 }
 
-export function tradeUpdateReceived(update) {
-  return { type: types.TRADES_UPDATE_RECEIVED, update: update };
+export function tradeUpdateReceived(updateType, update) {
+  return {
+    type: types.TRADES_UPDATE_RECEIVED,
+    updateType: updateType,
+    update: update
+  };
 }
