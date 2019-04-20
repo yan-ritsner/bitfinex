@@ -5,11 +5,13 @@ import BookView from "./components/BookView";
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
+      <div className="app">
+        <div className="app-header">
           <SymbolSelector />
-        </header>
-        <BookView />
+        </div>
+        <div className="app-content">
+          <BookView />
+        </div>
       </div>
     );
   }

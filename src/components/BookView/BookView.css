@@ -1,0 +1,6 @@
+.book-view {
+  display: table;
+}
+.book-view > div {
+  display: table-cell;
+}

@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { getSymbols, selectSymbol } from "../../actions/symbolActions";
 
-class SymbolSelector extends Component {
+class SymbolSelector extends PureComponent {
   componentDidMount() {
     const { symbols, getSymbols } = this.props;
     if (symbols.data.length === 0 && !symbols.requested) {
